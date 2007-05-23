@@ -11,7 +11,7 @@
  install:
  	export DESTDIR
  	perl Makefile.pl install
-+	perl Makefile.pl install_compat
++	perl Makefile.pl install_lw1
  
  clean:
  	perl Makefile.pl clean
