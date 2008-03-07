@@ -2,11 +2,11 @@ Name:           perl-libwhisker2
 Obsoletes:      perl-libwhisker <= 1.8
 Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Perl module geared specificly for HTTP testing
 
 Group:          Development/Libraries
-License:        GPL
+License:        GPLv2+
 URL:            http://www.wiretrip.net/rfp/lw.asp
 Source0:        http://www.wiretrip.net/rfp/libwhisker/libwhisker2-%{version}.tar.gz
 #install to vendorlib, not sitelib
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man?/*
 
 %changelog
+* Thu Mar 06 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 2.4-4
+Rebuild for new perl
+
 * Wed May 23 2007 Sindre Pedersen Bjørdal <foolish[AT]guezz.net> - 2.4-3
 - Fix patch to really include lw1 bridge
 * Tue May 08 2007 Sindre Pedersen Bjørdal <foolish[AT]guezz.net> - 2.4-2
