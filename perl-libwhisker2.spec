@@ -2,7 +2,7 @@ Name:           perl-libwhisker2
 Obsoletes:      perl-libwhisker <= 1.8
 Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.4
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Perl module geared specificly for HTTP testing
 
 Group:          Development/Libraries
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man?/*
 
 %changelog
+* Sun May 02 2010 Marcela Maslanova <mmaslano@redhat.com> - 2.4-8
+- Mass rebuild with perl-5.12.0
+
 * Mon Dec  7 2009 Stepan Kasal <skasal@redhat.com> - 2.4-7
 - rebuild against perl 5.10.1
 
