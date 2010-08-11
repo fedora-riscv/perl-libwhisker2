@@ -1,10 +1,3 @@
---- libwhisker2-2.4/compat/LW.pm.orig	2007-05-08 16:00:52.000000000 +0200
-+++ libwhisker2-2.4/compat/LW.pm	2007-05-08 16:01:24.000000000 +0200
-@@ -1,3 +1,4 @@
-+#!/usr7bin/perl
- #
- # This is a compatiblity 'bridge' which will translate the
- # libwhisker 2.x API into libwhisker 1.x format.  This should
 --- libwhisker2-2.4/Makefile.orig	2007-05-08 16:02:49.000000000 +0200
 +++ libwhisker2-2.4/Makefile	2007-05-08 16:02:21.000000000 +0200
 @@ -11,6 +11,7 @@ build:
