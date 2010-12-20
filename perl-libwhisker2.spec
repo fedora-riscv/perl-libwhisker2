@@ -3,7 +3,7 @@ Name:           perl-%{real_name}
 Obsoletes:      perl-libwhisker <= 1.8
 Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
 
 Group:          Development/Libraries
@@ -108,6 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Dec 20 2010 Marcela Maslanova <mmaslano@redhat.com> - 2.5-2
+- 661697 rebuild for fixing problems with vendorach/lib
+
 * Wed Aug 11 2010 Petr Pisar <ppisar@redhat.com> - 2.5-1
 - 2.5 bump
 - License changed from to 2-clause-BSD
