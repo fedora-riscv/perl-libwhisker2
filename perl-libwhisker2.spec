@@ -5,7 +5,6 @@ Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
 Release:        8%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
-
 Group:          Development/Libraries
 License:        BSD
 URL:            http://www.wiretrip.net/rfp/lw.asp
@@ -14,20 +13,23 @@ Source0:        http://www.wiretrip.net/rfp/libwhisker/%{real_name}-%{version}.t
 Patch0:         %{real_name}-2.4-vendorlib.patch
 #include libwhisker1 compatibility bridge
 Patch1:         %{real_name}-2.4-lw1bridge.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
 BuildArch:      noarch
-
 BuildRequires:  perl
-BuildRequires:  perl(Digest::MD5)
-BuildRequires:  perl(IO::Socket)
+BuildRequires:  perl(Config)
+BuildRequires:  perl(Cwd)
+BuildRequires:  perl(Pod::Man)
+# Run-time:
 BuildRequires:  perl(MIME::Base64)
-BuildRequires:  perl(Net::SSLeay)
 BuildRequires:  perl(POSIX)
 BuildRequires:  perl(Socket)
+# Tests:
+BuildRequires:  perl(Digest::MD5)
+BuildRequires:  perl(IO::Select)
+BuildRequires:  perl(IO::Socket)
+BuildRequires:  perl(Net::SSLeay)
 BuildRequires:  perl(Test::Simple)
 # All SSL and network related packages are optional at run time.
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 Libwhisker is a Perl library useful for HTTP testing scripts.  It
@@ -68,13 +70,10 @@ for F in scripts/*.pl; do
     mv "$F"{.new,}
 done
 
-
 %build
 make %{?_smp_mflags}
 
-
 %install
-rm -rf $RPM_BUILD_ROOT
 # Create directories, not created by Makefile.pl
 mkdir -p $RPM_BUILD_ROOT%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man3
@@ -92,24 +91,18 @@ chmod 0644 $RPM_BUILD_ROOT/%{perl_vendorlib}/*
 cd t 
 perl ./test.pl
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %files
-%defattr(-,root,root,-)
 %doc CHANGES KNOWNBUGS LICENSE README
 %{perl_vendorlib}/*
 %{_mandir}/man?/*
 
 %files doc
-%defattr(-,root,root,-)
 %{_datadir}/%{name}
-
 
 %changelog
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.5-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+- Specify all dependencies
 
 * Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.5-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
