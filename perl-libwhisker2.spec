@@ -8,7 +8,7 @@ Summary:        Perl module geared specifically for HTTP testing
 Group:          Development/Libraries
 License:        BSD
 URL:            http://www.wiretrip.net/rfp/lw.asp
-Source0:        http://www.wiretrip.net/rfp/libwhisker/%{real_name}-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/whisker/%{real_name}-%{version}.tar.gz
 #install to vendorlib, not sitelib
 Patch0:         %{real_name}-2.4-vendorlib.patch
 #include libwhisker1 compatibility bridge
