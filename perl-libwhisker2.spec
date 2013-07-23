@@ -13,6 +13,8 @@ Source0:        http://downloads.sourceforge.net/whisker/%{real_name}-%{version}
 Patch0:         %{real_name}-2.4-vendorlib.patch
 #include libwhisker1 compatibility bridge
 Patch1:         %{real_name}-2.4-lw1bridge.patch
+# Perl 5.18 compatibility
+Patch2:         %{real_name}-2.5-Editing-iterated-hash-is-undefined.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl(Config)
@@ -55,6 +57,7 @@ Examples how to use LW(2) Perl module.
 %setup -qn %{real_name}-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 mv compat/{lw,LW}.pm
 # Fix EOLs
 for F in CHANGES KNOWNBUGS LICENSE README docs/* scripts/*; do
@@ -102,6 +105,7 @@ perl ./test.pl
 %changelog
 * Mon Jul 22 2013 Petr Pisar <ppisar@redhat.com> - 2.5-9
 - Perl 5.18 rebuild
+- Perl 5.18 compatibility
 
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.5-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
