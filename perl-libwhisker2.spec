@@ -3,7 +3,7 @@ Name:           perl-%{real_name}
 Obsoletes:      perl-libwhisker <= 1.8
 Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
 Group:          Development/Libraries
 License:        BSD
@@ -103,6 +103,9 @@ perl ./test.pl
 %{_datadir}/%{name}
 
 %changelog
+* Fri Jun 05 2015 Jitka Plesnikova <jplesnik@redhat.com> - 2.5-13
+- Perl 5.22 rebuild
+
 * Thu Aug 28 2014 Jitka Plesnikova <jplesnik@redhat.com> - 2.5-12
 - Perl 5.20 rebuild
 
