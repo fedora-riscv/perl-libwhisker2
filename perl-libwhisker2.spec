@@ -17,6 +17,7 @@ Patch1:         %{real_name}-2.4-lw1bridge.patch
 Patch2:         %{real_name}-2.5-Editing-iterated-hash-is-undefined.patch
 BuildArch:      noarch
 BuildRequires:  perl
+BuildRequires:  perl-generators
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Pod::Man)
