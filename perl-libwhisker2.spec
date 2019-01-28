@@ -5,7 +5,6 @@ Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
 Release:        22%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
-Group:          Development/Libraries
 License:        BSD
 URL:            http://www.wiretrip.net/rfp/lw.asp
 Source0:        http://downloads.sourceforge.net/whisker/%{real_name}-%{version}.tar.gz
@@ -46,7 +45,6 @@ if it means breaking the protocol).
 
 %package doc
 Summary:        Development documentation for %{name}
-Group:          Documentation
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
