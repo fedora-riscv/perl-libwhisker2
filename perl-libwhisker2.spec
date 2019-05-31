@@ -3,7 +3,7 @@ Name:           perl-%{real_name}
 Obsoletes:      perl-libwhisker <= 1.8
 Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
-Release:        23%{?dist}
+Release:        24%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
 License:        BSD
 URL:            http://www.wiretrip.net/rfp/lw.asp
@@ -102,6 +102,9 @@ perl ./test.pl
 %{_datadir}/%{name}
 
 %changelog
+* Fri May 31 2019 Jitka Plesnikova <jplesnik@redhat.com> - 2.5-24
+- Perl 5.30 rebuild
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.5-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
