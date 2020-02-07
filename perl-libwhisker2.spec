@@ -1,9 +1,7 @@
 %define real_name libwhisker2
 Name:           perl-%{real_name}
-Obsoletes:      perl-libwhisker <= 1.8
-Provides:       perl-libwhisker = %{version}-%{release}
 Version:        2.5
-Release:        26%{?dist}
+Release:        27%{?dist}
 Summary:        Perl module geared specifically for HTTP testing
 License:        BSD
 URL:            http://www.wiretrip.net/rfp/lw.asp
@@ -15,15 +13,19 @@ Patch1:         %{real_name}-2.4-lw1bridge.patch
 # Perl 5.18 compatibility
 Patch2:         %{real_name}-2.5-Editing-iterated-hash-is-undefined.patch
 BuildArch:      noarch
-BuildRequires:  perl-interpreter
+BuildRequires:  coreutils
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Pod::Man)
-# Run-time:
-BuildRequires:  perl(MIME::Base64)
 BuildRequires:  perl(POSIX)
 BuildRequires:  perl(Socket)
+BuildRequires:  sed
+# Run-time:
+BuildRequires:  perl(MIME::Base64)
+# strict not used at tests
+# vars not used at tests
 # Tests:
 BuildRequires:  perl(Digest::MD5)
 BuildRequires:  perl(IO::Select)
@@ -32,6 +34,9 @@ BuildRequires:  perl(Net::SSLeay)
 BuildRequires:  perl(Test::Simple)
 # All SSL and network related packages are optional at run time.
 Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+Recommends:     perl(MIME::Base64)
+Obsoletes:      perl-libwhisker <= 1.8
+Provides:       perl-libwhisker = %{version}-%{release}
 
 %description
 Libwhisker is a Perl library useful for HTTP testing scripts.  It
@@ -49,7 +54,7 @@ Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description doc
-Examples how to use LW(2) Perl module.
+This package provides examples how to use LW(2) Perl module.
 
 
 %prep
@@ -73,14 +78,14 @@ for F in scripts/*.pl; do
 done
 
 %build
-make %{?_smp_mflags}
+%{make_build}
 
 %install
 # Create directories, not created by Makefile.pl
 mkdir -p $RPM_BUILD_ROOT%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man3
 
-make install DESTDIR=$RPM_BUILD_ROOT
+%{make_install}
 
 # Install documentation
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -94,7 +99,8 @@ cd t
 perl ./test.pl
 
 %files
-%doc CHANGES KNOWNBUGS LICENSE README
+%license LICENSE
+%doc CHANGES KNOWNBUGS README
 %{perl_vendorlib}/*
 %{_mandir}/man?/*
 
@@ -102,6 +108,9 @@ perl ./test.pl
 %{_datadir}/%{name}
 
 %changelog
+* Fri Feb 07 2020 Petr Pisar <ppisar@redhat.com> - 2.5-27
+- Modernize a spec file
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.5-26
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
