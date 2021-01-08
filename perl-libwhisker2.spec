@@ -13,6 +13,7 @@ Patch1:         %{real_name}-2.4-lw1bridge.patch
 # Perl 5.18 compatibility
 Patch2:         %{real_name}-2.5-Editing-iterated-hash-is-undefined.patch
 BuildArch:      noarch
+BuildRequires: make
 BuildRequires:  coreutils
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
